@@ -22,7 +22,7 @@ export class AppService {
   }
 
   deleteCard(id: string): string {
-	this.cardData = global.cardData.filter((x: DatabaseItem) => x.id !== id);
+	this.cardData = this.cardData.filter((x: DatabaseItem) => x.id !== id);
 
 	return id;
   }
