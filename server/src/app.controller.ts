@@ -13,24 +13,16 @@ export class AppController {
 
   @Get('getCards')
   getCards(): DatabaseItem[] {
-	return global.cardData;
+	return this.appService.getCards();
   }
 
   @Post('createCard')
   createCard(@Body() newItem: DatabaseItem): DatabaseItem {
-	const newCard = new DatabaseItem(newItem)
-
-	global.cardData.push(newCard);
-	console.log(newCard);
-	
-
-	return newCard;
+	return this.appService.createCard(newItem);
   }
 
   @Delete('deleteCard/:id')
   deleteCard(@Param('id') id: string): string {
-	global.cardData = global.cardData.filter((x: DatabaseItem) => x.id !== id);
-
-	return id;
+	return this.appService.deleteCard(id);
   }
 }

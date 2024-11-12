@@ -4,13 +4,9 @@ import { DatabaseItem } from './types';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
-  app.setGlobalPrefix('api'); 
+  app.setGlobalPrefix('api');
  
   await app.listen(process.env.PORT ?? 3000);
 }
-
-const initialCardData: DatabaseItem[] = []
-
-global.cardData = initialCardData;
 
 bootstrap();
